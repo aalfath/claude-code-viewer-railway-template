@@ -29,7 +29,7 @@ This template runs one service: Claude Code Viewer v0.8.2 with the Claude Code C
 
 **Variables:** `ANTHROPIC_API_KEY` is the only prompt. `ANTHROPIC_BASE_URL` is optional, for an Anthropic-compatible gateway. `CCV_PASSWORD` is generated; it also works as `Authorization: Bearer YOUR-PASSWORD` for the API.
 
-**Memory:** the web server uses about 140 MB, and each open Claude Code session about 250 MB while it stays open. On Railway's Free and Trial plans (0.5 GB) one session at a time fits; if more are opened, the oldest Claude Code process is ended first and the web server keeps running. Use 1 GB or more (Hobby plan) for two or three sessions at once.
+**Memory:** the web server uses about 140 MB, and each open Claude Code session about 250 MB while it stays open. On Railway's Free and Trial plans (0.5 GB) one session at a time fits; if more are opened, the kernel ends a Claude Code session process rather than the web server, which keeps running. Use 1 GB or more (Hobby plan) for two or three sessions at once.
 
 **Security:** anyone with the password can run commands in the container and spend your API key. Keep the password private and rotate it in Variables if it leaks. The built-in terminal is a restricted bash shell running as an unprivileged user.
 
