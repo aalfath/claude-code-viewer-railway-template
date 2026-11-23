@@ -15,7 +15,8 @@ RUN npm ci --omit=dev --no-audit --no-fund \
  && /app/node_modules/@anthropic-ai/claude-code/bin/claude.exe --version
 
 COPY start.sh claude-wrapper.sh /app/
-RUN chmod 755 /app/start.sh /app/claude-wrapper.sh
+RUN chmod 755 /app/start.sh /app/claude-wrapper.sh \
+ && ln -s /app/claude-wrapper.sh /usr/local/bin/claude
 
 ENV NODE_ENV=production \
     CCV_ENV=production \
