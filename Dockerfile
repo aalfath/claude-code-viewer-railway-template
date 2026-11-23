@@ -14,14 +14,14 @@ RUN npm ci --omit=dev --no-audit --no-fund \
  && npm cache clean --force \
  && /app/node_modules/@anthropic-ai/claude-code/bin/claude.exe --version
 
-COPY start.sh /app/start.sh
-RUN chmod 755 /app/start.sh
+COPY start.sh claude-wrapper.sh /app/
+RUN chmod 755 /app/start.sh /app/claude-wrapper.sh
 
 ENV NODE_ENV=production \
     CCV_ENV=production \
     HOME=/data \
     DATA_DIR=/data \
-    CCV_CC_EXECUTABLE_PATH=/app/node_modules/@anthropic-ai/claude-code/bin/claude.exe \
+    CCV_CC_EXECUTABLE_PATH=/app/claude-wrapper.sh \
     DISABLE_AUTOUPDATER=1 \
     CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1 \
     PORT=3400
