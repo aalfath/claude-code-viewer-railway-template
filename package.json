@@ -1,0 +1,8 @@
+{
+  "name": "claude-code-viewer-railway",
+  "private": true,
+  "description": "Pins the Claude Code Viewer release this template deploys. Bump the version here and regenerate package-lock.json.",
+  "dependencies": {
+    "@kimuson/claude-code-viewer": "0.8.2"
+  }
+}

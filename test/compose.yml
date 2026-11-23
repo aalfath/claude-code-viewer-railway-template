@@ -1,0 +1,16 @@
+services:
+  stub:
+    build: ./anthropic-stub
+    environment: { PORT: "8080" }
+  app:
+    build: ..
+    environment:
+      PORT: "3400"
+      CCV_PASSWORD: "testpass-123456"
+      ANTHROPIC_API_KEY: "sk-ant-test-not-real"
+      ANTHROPIC_BASE_URL: "http://stub:8080"
+    ports: ["3400:3400"]
+    volumes: ["data:/data"]
+    mem_limit: 512m
+    cpus: 1
+volumes: { data: {} }
